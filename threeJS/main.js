@@ -7,10 +7,27 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 1.5;
 
-// Crear el renderizador
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+// Obtener canvas existente y crear el renderizador usando ese canvas
+const canvas = document.querySelector('#glCanvas');
+const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+// Ajustar tamaño inicial al tamaño del canvas en la página
+const initialWidth = canvas.clientWidth || canvas.width;
+const initialHeight = canvas.clientHeight || canvas.height;
+renderer.setSize(initialWidth, initialHeight, false);
+
+// Actualizar cámara con la relación de aspecto del canvas
+camera.aspect = initialWidth / initialHeight;
+camera.updateProjectionMatrix();
+
+// Manejar redimensionado de la ventana para mantener el canvas y la cámara en sincronía
+function onWindowResize() {
+    const w = canvas.clientWidth || canvas.width;
+    const h = canvas.clientHeight || canvas.height;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+}
+window.addEventListener('resize', onWindowResize, false);
 
 // Crear la geometría del triángulo
 const geometry = new THREE.BufferGeometry();
