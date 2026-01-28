@@ -1,7 +1,7 @@
 // Función principal
 function main() {
     // Obtener el canvas
-    const canvas = document.querySelector('#glCanvas');
+    const canvas = document.getElementById('glCanvas');
     if (!canvas) {
         console.error('No se encontró el canvas');
         return;

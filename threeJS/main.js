@@ -8,7 +8,7 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 camera.position.z = 1.5;
 
 // Obtener canvas existente y crear el renderizador usando ese canvas
-const canvas = document.querySelector('#glCanvas');
+const canvas = document.getElementById('glCanvas');
 const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
 // Ajustar tamaño inicial al tamaño del canvas en la página
 const initialWidth = canvas.clientWidth || canvas.width;
