@@ -28,9 +28,9 @@ npx vite
 ```
 * Contemplar
 ### TWGL
-* Abrir la carpeta  ```twgl```
+* Abrir la carpeta  ```TWGL```
 ```bash
-cd tarea_01_ci5321/twgl/
+cd tarea_01_ci5321/TWGL/
 ```
 * Abrir ``` index.html``` en el navegador o si se usa VisualStudioCode desde la extensión LiveServer o alguna similar. 
 
